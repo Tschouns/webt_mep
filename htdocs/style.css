@@ -1,0 +1,64 @@
+*
+{
+    font-family: "MS Gothic";
+    color: black;
+}
+
+body
+{
+    background-color: black;
+
+    display: grid;
+    grid-template-columns: 200px 3fr;
+    grid-template-rows: 100px 1fr 50px;
+    grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+}
+
+header
+{
+    background-color: white;
+
+    grid-area: header;
+    padding: 5px;
+}
+
+aside
+{
+    background-color: darkgray;
+
+    grid-area: sidebar;
+    padding: 5px;
+}
+
+footer
+{
+    background-color: white;
+
+    grid-area: footer;
+    padding: 5px;
+}
+
+article
+{
+    padding: 5px;
+}
+
+section
+{
+    background-color: lightgray;
+
+    grid-area: content;
+    padding: 5px;
+}
+
+/* Specific elements */
+#info
+{
+}
+
+#form
+{
+}

@@ -8,17 +8,17 @@
     </head>
     <body>
         <header>
-            <h1>My App</h1>
+            <h1>Tagebuch mit Stimmungsbarometer</h1>
         </header>
         <aside>
-            <h2>Aside</h2>
+            <h2>Navigation</h2>
             <nav>
                 <ul>
                     <li>
                         <a href="#info">Info</a>
                     </li>
                     <li>
-                        <a href="#form">Form</a>
+                        <a href="#form">Eintragsformular</a>
                     </li>
                 </ul>
             </nav>
@@ -36,15 +36,18 @@
                 </p>
             </article>
             <article id="form_article">
-                <h2>Form</h2>
+                <h2>Eintragsformular</h2>
                 <br />
                 <form action="test.php" method="post">
                     <div id="form_grid">
-                        <label for="first_name">Vorname</label>
-                        <input type="text" id="first_name" name="first_name">
+                        <label for="entry_date">Eintragsdatum</label>
+                        <input type="date" id="entry_date" name="entry_date">
 
-                        <label for="last_name">Nachname</label>
-                        <input type="text" id="last_name" name="last_name">
+                        <label for="mood_slider">Stimmung</label>
+                        <input type="range" min="1" max="10" value="5" class="slider" id="mood_slider" name="mood_slider">
+
+                        <label for="entry_text">Text</label>
+                        <textarea id="entry_text" name="entry_text" cols="50" rows="5"></textarea>
 
                         <p></p>
                         <button type="submit" id="submit_button">OK</button>

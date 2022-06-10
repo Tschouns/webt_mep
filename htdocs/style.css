@@ -70,8 +70,8 @@ section
 #form_grid
 {
     display: grid;
-    grid-template-columns: 150px 1fr;
-    grid-template-rows: 30px 30px 30px 30px;
+    grid-template-columns: 150px 300px;
+    grid-template-rows: 30px 30px 100px 30px 30px 30px;
 }
 
 #submit_button

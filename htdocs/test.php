@@ -7,6 +7,17 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+       <header>
+            <h1>Tagebuch mit Stimmungsbarometer - Einträge</h1>
+        </header>
+        <aside>
+            <h2>Navigation</h2>
+            <nav>
+            </nav>
+        </aside>
+        <section id="content_section">
+            <article>
+
 <?php
 
 function validateDate($date_string) {
@@ -82,5 +93,11 @@ $text = $entry_date . " " . $mood_slider . " " . $entry_text;
 echo "<p>" . $text ."</p>";
 
 ?>
+
+            </article>
+        </section>
+        <footer>
+            <p>Made by Jonas Aklin, MEP WEBT, HSLU, 2022</p>
+        </footer>
     </body>
 </html>

@@ -49,13 +49,7 @@ function validateParameters() {
     return true;
 }
 
-function insertEntry() {
-    $conn = mysqli_connect("localhost", "root", "", "diary");
-    if (!$conn) {
-        echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
-        return;
-    }
-
+function insertEntry($conn) {
     $entry_date = DateTime::createFromFormat("Y-m-d", $_POST["entry_date"]);
     $entry_date_sql = $entry_date->format("Y-m-d");
     $mood = $_POST["mood_slider"];
@@ -71,8 +65,9 @@ function insertEntry() {
     if (!$result) {
         echo "<p>Die INSERT-Operation ist fehlgeschlagen.</p>";
     }
+}
 
-    mysqli_close($conn);
+function displayEntries($conn) {
 }
 
 // Main
@@ -80,7 +75,17 @@ if (!validateParameters()) {
     return;
 }
 
-insertEntry();
+// Connect to MySQL DB.
+$conn = mysqli_connect("localhost", "root", "", "diary");
+if (!$conn) {
+    echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
+    return;
+}
+
+insertEntry($conn);
+displayEntries($conn);
+
+mysqli_close($conn);
 
 echo "<br/>";
 

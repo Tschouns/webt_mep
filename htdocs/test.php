@@ -59,43 +59,90 @@ function insertEntry($conn) {
     $statement = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($statement, "is", $mood, $text);
 
-    // Execute.
+    // Execute INSERT.
     $result = mysqli_stmt_execute($statement);
 
     if (!$result) {
-        echo "<p>Die INSERT-Operation ist fehlgeschlagen.</p>";
+        echo "<p>Die INSERT-Operation ist fehlgeschlagen: " . mysqli_error($conn) . "</p>";
     }
 }
 
 function displayEntries($conn) {
+    $query = "SELECT id, entry_date, mood, text FROM entries ORDER BY entry_date, id";
+
+    // Execute query.
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        echo "<p>Das SELECT-Query ist fehlgeschlagen: " . mysqli_error($conn) . "</p>";
+        return;
+    }
+
+    if (mysqli_num_rows($result) == 0) {
+        echo "<p>Es sind noch keine Einträge vorhanden.</p>";
+        return;
+    }
+
+    echo "<table>";
+
+    // Table header row:
+    echo "<tr>";
+    echo "<th>Datum</th>";
+    echo "<th>Stimmung</th>";
+    echo "<th>Text</th>";
+    echo "</tr>";
+
+    // Entry rows:
+    $row_number = 0;
+    while($row = mysqli_fetch_array($result)){
+        $entry_date = $row['entry_date'];
+        $mood = $row['mood'];
+        $text = $row['text'];
+
+        $row_class = "row_type_" . ($row_number % 2);
+
+        echo "<tr class=\"$row_class\">";
+        echo "<td class=\"date_column\">$entry_date</td>";
+        echo "<td class=\"mood_column\">$mood</td>";
+        echo "<td class=\"text_column\">$text</td>";
+        echo "</tr>";
+
+        $row_number++;
+    }
+
+    echo "</table>";
+}
+
+function prepareHtmlContent() {
+    if (!validateParameters()) {
+        return;
+    }
+
+    // Connect to MySQL DB.
+    $conn = mysqli_connect("localhost", "root", "", "diary");
+    if (!$conn) {
+        echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
+        return;
+    }
+
+    insertEntry($conn);
+    displayEntries($conn);
+
+    mysqli_close($conn);
+
+    echo "<br/>";
+
+    $entry_date = $_POST["entry_date"];
+    $mood_slider = $_POST["mood_slider"];
+    $entry_text = $_POST["entry_text"];
+
+    $text = $entry_date . " " . $mood_slider . " " . $entry_text;
+
+    echo "<p>" . $text ."</p>";
 }
 
 // Main
-if (!validateParameters()) {
-    return;
-}
-
-// Connect to MySQL DB.
-$conn = mysqli_connect("localhost", "root", "", "diary");
-if (!$conn) {
-    echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
-    return;
-}
-
-insertEntry($conn);
-displayEntries($conn);
-
-mysqli_close($conn);
-
-echo "<br/>";
-
-$entry_date = $_POST["entry_date"];
-$mood_slider = $_POST["mood_slider"];
-$entry_text = $_POST["entry_text"];
-
-$text = $entry_date . " " . $mood_slider . " " . $entry_text;
-
-echo "<p>" . $text ."</p>";
+prepareHtmlContent();
 
 ?>
 

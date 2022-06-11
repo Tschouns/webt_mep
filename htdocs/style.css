@@ -58,6 +58,42 @@ section
     padding: 5px;
 }
 
+/* Tables */
+table
+{
+    background-color: red;
+}
+
+th
+{
+    background-color: cornflowerblue;
+}
+
+tr.row_type_0
+{
+    background-color: yellow;
+}
+
+tr.row_type_1
+{
+    background-color: red;
+}
+
+.date_column
+{
+    background-color: red;
+}
+
+.mood_column
+{
+    background-color: orange;
+}
+
+.text_column
+{
+    background-color: yellow;
+}
+
 /* Specific elements */
 #info_article
 {

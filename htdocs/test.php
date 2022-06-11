@@ -98,7 +98,7 @@ function displayEntries($conn) {
     echo "</table>";
 }
 
-function prepareDiaryHtmlContent() {
+function prepareDiaryContent() {
     if (!validateParameters()) {
         return;
     }
@@ -114,6 +114,24 @@ function prepareDiaryHtmlContent() {
     displayEntries($conn);
 
     mysqli_close($conn);
+}
+
+function prepareCookieHtmlContent() {
+    if (!array_key_exists("number_of_entries", $_COOKIE) ||
+        !is_numeric($_COOKIE["number_of_entries"])) {
+        setcookie("number_of_entries", 1, time()+(3600 * 12));
+        return;
+    }
+
+    // Increment number of entries.
+    $number_of_entries = $_COOKIE["number_of_entries"];
+    $number_of_entries++;
+    setcookie("number_of_entries", $number_of_entries, time()+(3600 * 12));
+
+    // Display a "welcome back" message.
+    echo "<article>";
+    echo "<p>Willkommen zurück! Sie haben heute schon den $number_of_entries. Eintrag erfasst.</p>";
+    echo "</article>";
 }
 
 ?>
@@ -136,9 +154,10 @@ function prepareDiaryHtmlContent() {
             </nav>
         </aside>
         <section id="content_section">
+            <?php  prepareCookieHtmlContent(); ?>
             <article>
                 <h2>Tagebucheinträge</h2>
-                <?php prepareDiaryHtmlContent(); ?>
+                <?php prepareDiaryContent(); ?>
             </article>
         </section>
         <footer>

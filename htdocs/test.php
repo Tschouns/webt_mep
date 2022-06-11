@@ -1,32 +1,44 @@
 <?php
-    [$id_entry_date, $id_mood_slider, $id_entry_text] = array("entry_date", "mood_slider", "entry_text");
-    $parameter_missing_error_message = "The following parameter is missing: ";
+    $html_content = prepareHtmlContent();
 
-    if (!array_key_exists($id_entry_date, $_POST))
+    function prepareHtmlContent()
     {
-        echo $parameter_missing_error_message . $id_entry_date;
-        return;
+        [$id_entry_date, $id_mood_slider, $id_entry_text] = array("entry_date", "mood_slider", "entry_text");
+
+        if (!array_key_exists($id_entry_date, $_POST) || !validateDate($_POST[$id_entry_date]))
+        {
+            return "The parameter " . $id_entry_date . " is missing, or not a valid date.";
+        }
+
+        if (!array_key_exists($id_mood_slider, $_POST) ||
+            !is_numeric($_POST[$id_mood_slider]) ||
+            (intval($_POST[$id_mood_slider])) < 1 ||
+            (intval($_POST[$id_mood_slider])) > 10)
+        {
+           return "The parameter " . $id_mood_slider . " is missing, or not a valid number between 1 and 10.";
+        }
+
+        if (!array_key_exists($id_entry_text, $_POST) || strlen($_POST[$id_entry_text]) == 0)
+        {
+            return "The parameter " . $id_entry_text . " is missing, or empty.";
+        }
+
+        $entry_date = $_POST[$id_entry_date];
+        $mood_slider = $_POST[$id_mood_slider];
+        $entry_text = $_POST[$id_entry_text];
+
+        $text = $entry_date . " " . $mood_slider . " " . $entry_text;
+
+        return "<p>" . $text ."</p>";
     }
 
-    if (!array_key_exists($id_mood_slider, $_POST))
+    function validateDate($date_string)
     {
-        echo $parameter_missing_error_message . $id_mood_slider;
-        return;
+        $format = 'Y-m-d';
+        $d = DateTime::createFromFormat($format, $date_string);
+
+        return $d && $d->format($format) === $date_string;
     }
-
-    if (!array_key_exists($id_entry_text, $_POST))
-    {
-        echo $parameter_missing_error_message . $id_entry_text;
-        return;
-    }
-
-    $entryDate = $_POST[$id_entry_date];
-    $moodSlider = $_POST[$id_mood_slider];
-    $entryText = $_POST[$id_entry_text];
-
-    $text = $entryDate . " " . $moodSlider . " " . $entryText;
-
-    $html_content = "<p>" . $text ."</p>";
 ?>
 <html>
     <head>

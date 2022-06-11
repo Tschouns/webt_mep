@@ -2,13 +2,11 @@
 {
     font-family: 'Gentium Plus', serif;
     color: black;
-
-    margin: 1px;
 }
 
 body
 {
-    background-color: dodgerblue;
+    background-color: lightslategray;
 
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -17,6 +15,8 @@ body
         "header header"
         "sidebar content"
         "footer footer";
+
+    padding: 0px;
 }
 
 header
@@ -61,37 +61,39 @@ section
 /* Tables */
 table
 {
-    background-color: red;
+    background-color: black;
 }
 
 th
 {
-    background-color: cornflowerblue;
+    background-color: white;
+    text-align: left;
 }
 
 tr.row_type_0
 {
-    background-color: yellow;
+    background-color: lightgrey;
 }
 
 tr.row_type_1
 {
-    background-color: red;
+    background-color: darkgray;
 }
 
-.date_column
+td.date_column
 {
-    background-color: red;
+    width: 100px;
+    text-align: center;
 }
 
-.mood_column
+td.mood_column
 {
-    background-color: orange;
+    width: 100px;
+    text-align: right;
 }
 
-.text_column
+td.text_column
 {
-    background-color: yellow;
 }
 
 /* Specific elements */
@@ -114,4 +116,9 @@ tr.row_type_1
 {
     width: 100px;
     height: 30px;
+}
+
+#entry_table
+{
+    width: 100%;
 }

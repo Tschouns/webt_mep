@@ -17,6 +17,7 @@
         </aside>
         <section id="content_section">
             <article>
+                <h2>Tagebucheinträge</h2>
 
 <?php
 
@@ -83,16 +84,20 @@ function displayEntries($conn) {
         return;
     }
 
-    echo "<table>";
+    echo "<table id=\"entry_table\">";
 
     // Table header row:
+    echo "<thead>";
     echo "<tr>";
     echo "<th>Datum</th>";
     echo "<th>Stimmung</th>";
     echo "<th>Text</th>";
     echo "</tr>";
+    echo "</thead>";
 
     // Entry rows:
+    echo "<tbody>";
+
     $row_number = 0;
     while($row = mysqli_fetch_array($result)){
         $entry_date = $row['entry_date'];
@@ -110,6 +115,7 @@ function displayEntries($conn) {
         $row_number++;
     }
 
+    echo "</tbody>";
     echo "</table>";
 }
 

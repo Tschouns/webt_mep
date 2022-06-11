@@ -1,24 +1,3 @@
-<html>
-    <head>
-        <title>Tagebuch mit Stimmungsbarometer</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-       <header>
-            <h1>Tagebuch mit Stimmungsbarometer - Einträge</h1>
-        </header>
-        <aside>
-            <h2>Navigation</h2>
-            <nav>
-            </nav>
-        </aside>
-        <section id="content_section">
-            <article>
-                <h2>Tagebucheinträge</h2>
-
 <?php
 
 function validateDate($date_string) {
@@ -119,7 +98,7 @@ function displayEntries($conn) {
     echo "</table>";
 }
 
-function prepareHtmlContent() {
+function prepareDiaryHtmlContent() {
     if (!validateParameters()) {
         return;
     }
@@ -135,23 +114,31 @@ function prepareHtmlContent() {
     displayEntries($conn);
 
     mysqli_close($conn);
-
-    echo "<br/>";
-
-    $entry_date = $_POST["entry_date"];
-    $mood_slider = $_POST["mood_slider"];
-    $entry_text = $_POST["entry_text"];
-
-    $text = $entry_date . " " . $mood_slider . " " . $entry_text;
-
-    echo "<p>" . $text ."</p>";
 }
-
-// Main
-prepareHtmlContent();
 
 ?>
 
+<html>
+    <head>
+        <title>Tagebuch mit Stimmungsbarometer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+       <header>
+            <h1>Tagebuch mit Stimmungsbarometer - Einträge</h1>
+        </header>
+        <aside>
+            <h2>Navigation</h2>
+            <nav>
+            </nav>
+        </aside>
+        <section id="content_section">
+            <article>
+                <h2>Tagebucheinträge</h2>
+                <?php prepareDiaryHtmlContent(); ?>
             </article>
         </section>
         <footer>

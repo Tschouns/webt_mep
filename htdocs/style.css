@@ -8,7 +8,7 @@
 
 body
 {
-    background-color: black;
+    background-color: dodgerblue;
 
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -45,12 +45,14 @@ footer
 
 article
 {
+    background-color: lightgrey;
+
     padding: 5px;
 }
 
 section
 {
-    background-color: lightgray;
+    background-color: mediumseagreen;
 
     grid-area: content;
     padding: 5px;
@@ -59,12 +61,10 @@ section
 /* Specific elements */
 #info_article
 {
-    background-color: darkseagreen;
 }
 
 #form_article
 {
-    background-color: darkseagreen;
 }
 
 #form_grid

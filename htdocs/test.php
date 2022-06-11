@@ -61,7 +61,7 @@ function insertEntry() {
     $mood = $_POST["mood_slider"];
     $text = $_POST["entry_text"];
 
-    $query = "INSERT INTO entries (entry_date, mood, text) VALUES ('". $entry_date_sql . "', ?, ?)";
+    $query = "INSERT INTO entries (entry_date, mood, text) VALUES ('$entry_date_sql', ?, ?)";
     $statement = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($statement, "is", $mood, $text);
 

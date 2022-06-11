@@ -38,10 +38,40 @@ function validateParameters() {
     return true;
 }
 
-/* Main */
+function insertEntry() {
+    $conn = mysqli_connect("localhost", "root", "", "diary");
+    if (!$conn) {
+        echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
+        return;
+    }
+
+    $entry_date = DateTime::createFromFormat("Y-m-d", $_POST["entry_date"]);
+    $entry_date_sql = $entry_date->format("Y-m-d");
+    $mood = $_POST["mood_slider"];
+    $text = $_POST["entry_text"];
+
+    $query = "INSERT INTO entries (entry_date, mood, text) VALUES ('". $entry_date_sql . "', ?, ?)";
+    $statement = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($statement, "is", $mood, $text);
+
+    // Execute.
+    $result = mysqli_stmt_execute($statement);
+
+    if (!$result) {
+        echo "<p>Die INSERT-Operation ist fehlgeschlagen.</p>";
+    }
+
+    mysqli_close($conn);
+}
+
+// Main
 if (!validateParameters()) {
     return;
 }
+
+insertEntry();
+
+echo "<br/>";
 
 $entry_date = $_POST["entry_date"];
 $mood_slider = $_POST["mood_slider"];

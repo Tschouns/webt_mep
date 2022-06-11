@@ -1,0 +1,9 @@
+CREATE DATABASE diary;
+USE diary;
+CREATE TABLE entries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    entry_date DATE NOT NULL,
+    mood INT NOT NULL,
+    text VARCHAR(1000) NOT NULL
+);
+SHOW TABLES;

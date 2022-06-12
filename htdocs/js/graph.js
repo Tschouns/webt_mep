@@ -1,5 +1,5 @@
-function drawGraph(canvasId) {
-    alert('Hello');
+function drawGraph(canvasId, data) {
+    alert(data[0]["entry_date"]);
 
     // Get the canvas and context.
     var canvas = document.getElementById(canvasId);

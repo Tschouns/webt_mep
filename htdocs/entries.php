@@ -63,28 +63,8 @@ function displayEntries($conn) {
         return;
     }
 
-    // Graph article.
-    echo "<article>";
-    echo "<h2>Stimmungsverlauf</h2>";
-    echo "<canvas id=\"graph_canvas\" onclick=\"drawGraph('graph_canvas')\"></canvas>";
-    echo "</article";
-
-    // Entry table article.
-    echo "<article>";
-    echo "<h2>Eintr&auml;ge</h2>";
-    echo "<table id=\"entry_table\">";
-
-    // Table header row:
-    echo "<thead>";
-    echo "<tr>";
-    echo "<th>Datum</th>";
-    echo "<th>Stimmung</th>";
-    echo "<th>Text</th>";
-    echo "</tr>";
-    echo "</thead>";
-
-    // Entry rows:
-    echo "<tbody>";
+    $table_rows_html = "";
+    $mood_data_json = "";
 
     $row_number = 0;
     while($row = mysqli_fetch_array($result)){
@@ -92,19 +72,52 @@ function displayEntries($conn) {
         $mood = $row['mood'];
         $text = $row['text'];
 
+        // Prepare an HTML table row.
         $row_class = "row_type_" . ($row_number % 2);
 
-        echo "<tr class=\"$row_class\">";
-        echo "<td class=\"date_column\">$entry_date</td>";
-        echo "<td class=\"mood_column\">$mood</td>";
-        echo "<td class=\"text_column\">$text</td>";
-        echo "</tr>";
+        $table_rows_html .= "<tr class=\"$row_class\">";
+        $table_rows_html .= "<td class=\"date_column\">$entry_date</td>";
+        $table_rows_html .= "<td class=\"mood_column\">$mood</td>";
+        $table_rows_html .= "<td class=\"text_column\">$text</td>";
+        $table_rows_html .= "</tr>";
+
+        // Prepare a JSON data point.
+        if (strlen($mood_data_json) > 0) {
+            $mood_data_json .= ", ";
+        }
+
+        $mood_data_json .= "{ \"entry_date\":\"$entry_date\", \"mood\":$mood }";
 
         $row_number++;
     }
 
+    $mood_data_json_array = "[ " . $mood_data_json . " ]";
+
+    // Graph article.
+    echo "<article>";
+    echo "<h2>Stimmungsverlauf</h2>";
+    echo "<script id=\"mood_data\" type=\"application/json\">$mood_data_json_array</script>";
+    echo "<script>mood_data = JSON.parse(document.getElementById(\"mood_data\").text); </script>";
+    echo "<canvas id=\"graph_canvas\" onclick=\"drawGraph('graph_canvas', mood_data)\"></canvas>";
+    echo "</article";
+
+    // Entry table article.
+    echo "<article>";
+    echo "<h2>Eintr&auml;ge</h2>";
+
+    echo "<table id=\"entry_table\">";
+    echo "<thead>";
+    echo "<tr>";
+    echo "<th>Datum</th>";
+    echo "<th>Stimmung</th>";
+    echo "<th>Text</th>";
+    echo "</tr>";
+    echo "</thead>";
+    echo "<tbody>";
+    echo $table_rows_html;
     echo "</tbody>";
     echo "</table>";
+
     echo "</article>";
 }
 

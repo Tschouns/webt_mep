@@ -1,4 +1,4 @@
-*
+*, h1, h2, h3, h4
 {
     font-family: 'Gentium Plus', serif;
     color: black;
@@ -55,7 +55,6 @@ section
     background-color: transparent;
 
     grid-area: content;
-    padding: 5px;
 }
 
 /* Tables */

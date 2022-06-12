@@ -18,6 +18,14 @@ function validateEntryDate() {
     return true;
 }
 
+function displayMood() {
+    let slider = document.getElementById("mood_slider");
+    let sliderMessage = document.getElementById("mood_slider_message");
+
+    sliderMessage.innerHTML = slider.value;
+    return true;
+}
+
 function validateEntryText() {
     let textBox = document.getElementById("entry_text");
     let textBoxMessage = document.getElementById("entry_text_message");
@@ -33,5 +41,6 @@ function validateEntryText() {
 
 function validateForm() {
     validateEntryDate();
+    displayMood();
     validateEntryText();
 }

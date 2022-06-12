@@ -5,6 +5,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="js/form.js"></script>
     </head>
     <body>
         <header>
@@ -64,16 +65,21 @@
                 <form action="entries.php" method="post">
                     <div id="form_grid">
                         <label for="entry_date">Eintragsdatum</label>
-                        <input type="date" id="entry_date" name="entry_date">
+                        <input type="date" id="entry_date" name="entry_date" oninput="validateEntryDate()">
+                        <div id="entry_date_message"></div>
 
                         <label for="mood_slider">Stimmung</label>
                         <input type="range" min="1" max="10" value="5" class="slider" id="mood_slider" name="mood_slider">
+                        <div id="mood_slider_message"></div>
 
                         <label for="entry_text">Text</label>
                         <textarea id="entry_text" name="entry_text" cols="50" rows="5"></textarea>
+                        <div id="entry_text_message"></div>
 
                         <p></p>
                         <p></p>
+                        <p></p>
+
                         <p></p>
                         <button type="submit" id="submit_button">OK</button>
                     </div>

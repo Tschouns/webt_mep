@@ -1,0 +1,28 @@
+td.date_column
+{
+    width: 100px;
+    text-align: center;
+}
+
+td.mood_column
+{
+    width: 100px;
+    text-align: center;
+}
+
+td.text_column
+{
+}
+
+#graph_canvas
+{
+    background-color: white;
+
+    width: 600px;
+    height: 400px;
+}
+
+#entry_table
+{
+    width: 100%;
+}

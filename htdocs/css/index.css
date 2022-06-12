@@ -1,0 +1,25 @@
+#info_article
+{
+}
+
+#form_article
+{
+}
+
+#form_grid
+{
+    display: grid;
+    grid-template-columns: 150px 300px 1fr;
+    grid-template-rows: 30px 30px 100px 30px 30px 30px;
+}
+
+div.error_message
+{
+    color: orangered;
+}
+
+#submit_button
+{
+    width: 100px;
+    height: 30px;
+}

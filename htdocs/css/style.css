@@ -52,7 +52,7 @@ article
 
 section
 {
-    background-color: mediumseagreen;
+    background-color: transparent;
 
     grid-area: content;
     padding: 5px;
@@ -80,58 +80,3 @@ tr.row_type_1
     background-color: darkgray;
 }
 
-td.date_column
-{
-    width: 100px;
-    text-align: center;
-}
-
-td.mood_column
-{
-    width: 100px;
-    text-align: center;
-}
-
-td.text_column
-{
-}
-
-div.error_message
-{
-    color: orangered;
-}
-
-/* Specific elements */
-#info_article
-{
-}
-
-#form_article
-{
-}
-
-#form_grid
-{
-    display: grid;
-    grid-template-columns: 150px 300px 1fr;
-    grid-template-rows: 30px 30px 100px 30px 30px 30px;
-}
-
-#submit_button
-{
-    width: 100px;
-    height: 30px;
-}
-
-#graph_canvas
-{
-    background-color: white;
-
-    width: 600px;
-    height: 400px;
-}
-
-#entry_table
-{
-    width: 100%;
-}

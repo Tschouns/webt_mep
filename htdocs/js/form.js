@@ -40,7 +40,20 @@ function validateEntryText() {
 }
 
 function validateForm() {
-    validateEntryDate();
     displayMood();
-    validateEntryText();
+
+    let isDateValid = validateEntryDate();
+    let isTextValid = validateEntryText();
+
+    return isDateValid && isTextValid;
+}
+
+function attachSubmitEventHandler() {
+    // Attach event handler to submit button, to prevent the form from being
+    // submitted while there are errors.
+    document.getElementById("submit_button").addEventListener("click", function(event){
+        if (!validateForm()) {
+            event.preventDefault();
+        }
+    });
 }

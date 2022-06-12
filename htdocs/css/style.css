@@ -89,7 +89,7 @@ td.date_column
 td.mood_column
 {
     width: 100px;
-    text-align: right;
+    text-align: center;
 }
 
 td.text_column

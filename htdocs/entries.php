@@ -70,7 +70,7 @@ function displayEntries($conn) {
     while($row = mysqli_fetch_array($result)){
         $entry_date = $row['entry_date'];
         $mood = $row['mood'];
-        $text = $row['text'];
+        $text = htmlspecialchars($row['text']);
 
         // Prepare an HTML table row.
         $row_class = "row_type_" . ($row_number % 2);
@@ -78,7 +78,7 @@ function displayEntries($conn) {
         $table_rows_html .= "<tr class=\"$row_class\">";
         $table_rows_html .= "<td class=\"date_column\">$entry_date</td>";
         $table_rows_html .= "<td class=\"mood_column\">$mood</td>";
-        $table_rows_html .= "<td class=\"text_column\">$text</td>";
+        $table_rows_html .= "<td class=\"text_column\"><pre>$text</pre></td>";
         $table_rows_html .= "</tr>";
 
         // Prepare a JSON data point.

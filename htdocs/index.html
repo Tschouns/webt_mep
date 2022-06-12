@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript" src="js/form.js"></script>
     </head>
-    <body onload="validateForm()">
+    <body onload="validateForm(); attachSubmitEventHandler();">
         <header>
             <h1>Tagebuch mit Stimmungsbarometer</h1>
         </header>
@@ -81,7 +81,7 @@
                         <p></p>
 
                         <p></p>
-                        <button type="submit" id="submit_button">OK</button>
+                        <button type="submit" id="submit_button"">OK</button>
                     </div>
                 </form>
             </article>

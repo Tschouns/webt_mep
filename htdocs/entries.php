@@ -63,6 +63,15 @@ function displayEntries($conn) {
         return;
     }
 
+    // Graph article.
+    echo "<article>";
+    echo "<h2>Stimmungsverlauf</h2>";
+    echo "<canvas id=\"graph_canvas\" onclick=\"drawGraph('graph_canvas')\"></canvas>";
+    echo "</article";
+
+    // Entry table article.
+    echo "<article>";
+    echo "<h2>Eintr&auml;ge</h2>";
     echo "<table id=\"entry_table\">";
 
     // Table header row:
@@ -96,27 +105,10 @@ function displayEntries($conn) {
 
     echo "</tbody>";
     echo "</table>";
+    echo "</article>";
 }
 
-function prepareDiaryContent() {
-    if (!validateParameters()) {
-        return;
-    }
-
-    // Connect to MySQL DB.
-    $conn = mysqli_connect("localhost", "root", "", "diary");
-    if (!$conn) {
-        echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
-        return;
-    }
-
-    insertEntry($conn);
-    displayEntries($conn);
-
-    mysqli_close($conn);
-}
-
-function prepareCookieHtmlContent() {
+function displayCookieContent() {
     if (!array_key_exists("number_of_entries", $_COOKIE) ||
         !is_numeric($_COOKIE["number_of_entries"])) {
         setcookie("number_of_entries", 1, time()+(3600 * 12));
@@ -134,6 +126,26 @@ function prepareCookieHtmlContent() {
     echo "</article>";
 }
 
+function prepareHtmlContent() {
+    if (!validateParameters()) {
+        return;
+    }
+
+    displayCookieContent();
+
+    // Connect to MySQL DB.
+    $conn = mysqli_connect("localhost", "root", "", "diary");
+    if (!$conn) {
+        echo "<p>Die Datenbankverbindung ist fehlgeschlagen.</p>";
+        return;
+    }
+
+    insertEntry($conn);
+    displayEntries($conn);
+
+    mysqli_close($conn);
+}
+
 ?>
 
 <html>
@@ -147,7 +159,7 @@ function prepareCookieHtmlContent() {
     </head>
     <body>
        <header>
-            <h1>Tagebuch mit Stimmungsbarometer - Einträge</h1>
+            <h1>Tagebuch mit Stimmungsbarometer - Eintr&auml;ge</h1>
         </header>
         <aside>
             <h2>Navigation</h2>
@@ -155,15 +167,7 @@ function prepareCookieHtmlContent() {
             </nav>
         </aside>
         <section id="content_section">
-            <?php  prepareCookieHtmlContent(); ?>
-            <article>
-                <h2>Stimmungsverlauf</h2>
-                <canvas id="graph_canvas" onclick="drawGraph('graph_canvas')"></canvas>
-            </article>
-            <article>
-                <h2>Tagebucheinträge</h2>
-                <?php prepareDiaryContent(); ?>
-            </article>
+            <?php prepareHtmlContent(); ?>
         </section>
         <footer>
             <p>Made by Jonas Aklin, MEP WEBT, HSLU, 2022</p>

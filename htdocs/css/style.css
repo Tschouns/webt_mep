@@ -4,6 +4,7 @@
     color: black;
 }
 
+/* Main layout */
 body
 {
     background-color: lightslategray;
@@ -48,16 +49,36 @@ footer
     padding: 5px;
 }
 
+/* Navigation */
+nav ul
+{
+    list-style-type: none;
+}
+
+nav a
+{
+    display: block;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    background-color: dimgray;
+    color: white;
+}
+
+/* Content */
+section
+{
+    background-color: transparent;
+}
+
 article
 {
     background-color: lightgrey;
 
+    margin: 5px;
     padding: 5px;
-}
-
-section
-{
-    background-color: transparent;
 }
 
 /* Tables */

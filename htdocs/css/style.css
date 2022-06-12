@@ -96,6 +96,11 @@ td.text_column
 {
 }
 
+div.error_message
+{
+    color: orangered;
+}
+
 /* Specific elements */
 #info_article
 {

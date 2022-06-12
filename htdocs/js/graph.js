@@ -20,18 +20,20 @@ function drawGraph(canvasId, data) {
     let earliestDate = dataPoints[0].date;
     let latestDate = dataPoints[dataPoints.length - 1].date;
 
-    let difference = latestDate.getTime() - earliestDate.getTime();
-    let differenceInDays = Math.ceil(difference / (1000 * 3600 * 24));
+    let differenceInDays = getDifferenceInDays(earliestDate, latestDate);
 
     // Determine step sizes.
-    let xPadding = 30;
+    let xPadding = 10;
     let yPadding = 20;
 
-    let xStepSize = (canvas.width - 2 * xPadding) / differenceInDays;
-    let yStepSize = (canvas.height - 2 * yPadding) / 9;
+    let xStepSize = (canvas.width - (2 * xPadding)) / differenceInDays;
+    let yStepSize = (canvas.height - (2 * yPadding)) / 9;
 
     // Get graph points.
-    // TODO...
+    let graphPoints = dataPoints.map(i => ({
+        x: getDifferenceInDays(earliestDate, i.date) * xStepSize + xPadding,
+        y: canvas.height - ((i.mood - 1) * yStepSize) - yPadding
+    }));
 
     // Draw axes.
     context.moveTo(xPadding, canvas.height - yPadding);
@@ -42,10 +44,24 @@ function drawGraph(canvasId, data) {
     context.lineTo(xPadding, yPadding);
     context.stroke();
 
+    // Draw points:
+    for (let i = 0; i < graphPoints.length; i++) {
+        context.color = "red";
+        context.beginPath();
+        context.arc(graphPoints[i].x, graphPoints[i].y, 3, 0, 2 * Math.PI);
+        context.stroke();
+    }
+
     // Draw stuff.
-    context.font = "30px Arial";
-    context.fillText("Hello World", 10, 50);
-    context.fillText(earliestDate, 10, 70);
-    context.fillText(latestDate, 10, 90);
+    //context.font = "30px Arial";
+    //context.fillText("Hello World", 10, 50);
+    //context.fillText(earliestDate, 10, 70);
+    //context.fillText(latestDate, 10, 90);
 }
 
+function getDifferenceInDays(date1, date2) {
+    let difference = date2.getTime() - date1.getTime();
+    let differenceInDays = Math.ceil(difference / (1000 * 3600 * 24));
+
+    return differenceInDays;
+}

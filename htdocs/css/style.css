@@ -122,8 +122,8 @@ td.text_column
 {
     background-color: cornflowerblue;
 
-    width: 500px;
-    height: 300px;
+    width: 100%;
+    height: 400px;
 }
 
 #entry_table

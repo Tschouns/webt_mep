@@ -29,10 +29,33 @@
             <article id="info_article">
                 <h2>Info</h2>
                 <p>
-                    Hier steht die Bediehnungsanleitung...
+                    Dies hier ist ein Tagebuch mit Stimmungsbarometer.
+                </p>
+                <h3>Formular</h3>
+                <p>
+                    Im Formular unten kann ein Eintrag erfasst werden, bestehend aus folgenden Elementen:
+                    <ul>
+                        <li>
+                            <b>Eintragsdatum</b> (das Datum auf das sich der Eintrag bezieht)
+                        </li>
+                        <li>
+                            <b>Stimmung</b> (Zahl zwischen 1 und 10)
+                        </li>
+                        <li>
+                            <b>Text</b> (ein beliebiger Text zum Eintrag)
+                        </li>
+                    </ul>
                 </p>
                 <p>
-                    zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz zzz
+                    Eintragsdatum und Text m&uuml;ssen eingegeben werden.
+                </p>
+                <h3>Stimmungsverlauf und &Uuml;bersicht</h3>
+                <p>
+                    Wenn ein Eintrag erfasst wird, wird auf der nächsten Seite der Stimmungsverlauf in einem Graph dargestellt:
+                </p>
+                <img src="img/graph.png" />
+                <p>
+                    Unterhalb des Graphs werden alle bisher erstellten Einträge in chronologischer Reihenfolge (nach Eintragsdatum) dargestellt.
                 </p>
             </article>
             <article id="form_article">
@@ -49,6 +72,8 @@
                         <label for="entry_text">Text</label>
                         <textarea id="entry_text" name="entry_text" cols="50" rows="5"></textarea>
 
+                        <p></p>
+                        <p></p>
                         <p></p>
                         <button type="submit" id="submit_button">OK</button>
                     </div>

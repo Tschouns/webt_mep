@@ -177,6 +177,11 @@ function prepareHtmlContent() {
         <aside>
             <h2>Navigation</h2>
             <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Zur&uuml;ck</a>
+                    </li>
+                </ul>
             </nav>
         </aside>
         <section id="content_section">

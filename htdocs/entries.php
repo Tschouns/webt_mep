@@ -178,8 +178,8 @@ function prepareHtmlContent() {
             <h1>Tagebuch mit Stimmungsbarometer - Eintr&auml;ge</h1>
         </header>
         <aside>
-            <h2>Navigation</h2>
             <nav>
+                <h2>Navigation</h2>
                 <ul>
                     <li>
                         <a href="index.html">Zur&uuml;ck</a>

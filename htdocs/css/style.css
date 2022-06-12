@@ -50,6 +50,11 @@ footer
 }
 
 /* Navigation */
+nav
+{
+    position: fixed;
+}
+
 nav ul
 {
     list-style-type: none;

@@ -35,14 +35,14 @@ function drawGraph(canvasId, data) {
         y: canvas.height - ((i.mood - 1) * yStepSize) - yPadding
     }));
 
+    // Draw points:
+    for (let i = 1; i < graphPoints.length; i++) {
+        drawLine(context,graphPoints[i - 1].x, graphPoints[i - 1].y, graphPoints[i].x, graphPoints[i].y, "red");
+    }
+
     // Draw axes.
     drawLine(context, xPadding, canvas.height - yPadding, canvas.width - xPadding, canvas.height - yPadding, "black");
     drawLine(context, xPadding, canvas.height - yPadding, xPadding, yPadding, "black");
-
-    // Draw points:
-    for (let i = 0; i < graphPoints.length; i++) {
-        drawDot(context, graphPoints[i].x, graphPoints[i].y, 3, "red");
-    }
 }
 
 function getDifferenceInDays(date1, date2) {
@@ -53,6 +53,7 @@ function getDifferenceInDays(date1, date2) {
 }
 
 function drawLine(context, aX, aY, bX, bY, color) {
+    context.beginPath();
     context.moveTo(aX, aY);
     context.lineTo(bX, bY);
     context.strokeStyle = color;

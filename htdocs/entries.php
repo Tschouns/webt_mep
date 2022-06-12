@@ -98,7 +98,7 @@ function displayEntries($conn) {
     echo "<h2>Stimmungsverlauf</h2>";
     echo "<script id=\"mood_data\" type=\"application/json\">$mood_data_json_array</script>";
     echo "<script>mood_data = JSON.parse(document.getElementById(\"mood_data\").text); </script>";
-    echo "<canvas id=\"graph_canvas\" onclick=\"drawGraph('graph_canvas', mood_data)\"></canvas>";
+    echo "<canvas id=\"graph_canvas\"></canvas>";
     echo "</article";
 
     // Entry table article.
@@ -170,7 +170,7 @@ function prepareHtmlContent() {
         <link rel="stylesheet" href="css/style.css">
         <script type="text/javascript" src="js/graph.js"></script>
     </head>
-    <body>
+    <body onload="drawGraph('graph_canvas', mood_data)">
        <header>
             <h1>Tagebuch mit Stimmungsbarometer - Eintr&auml;ge</h1>
         </header>

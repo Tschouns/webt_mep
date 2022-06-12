@@ -23,8 +23,8 @@ function drawGraph(canvasId, data) {
     let differenceInDays = getDifferenceInDays(earliestDate, latestDate);
 
     // Determine step sizes.
-    let xPadding = 10;
-    let yPadding = 20;
+    let xPadding = 20;
+    let yPadding = 10;
 
     let xStepSize = (canvas.width - (2 * xPadding)) / differenceInDays;
     let yStepSize = (canvas.height - (2 * yPadding)) / 9;
@@ -36,27 +36,13 @@ function drawGraph(canvasId, data) {
     }));
 
     // Draw axes.
-    context.moveTo(xPadding, canvas.height - yPadding);
-    context.lineTo(canvas.width - xPadding, canvas.height - yPadding);
-    context.stroke();
-
-    context.moveTo(xPadding, canvas.height - yPadding);
-    context.lineTo(xPadding, yPadding);
-    context.stroke();
+    drawLine(context, xPadding, canvas.height - yPadding, canvas.width - xPadding, canvas.height - yPadding, "black");
+    drawLine(context, xPadding, canvas.height - yPadding, xPadding, yPadding, "black");
 
     // Draw points:
     for (let i = 0; i < graphPoints.length; i++) {
-        context.color = "red";
-        context.beginPath();
-        context.arc(graphPoints[i].x, graphPoints[i].y, 3, 0, 2 * Math.PI);
-        context.stroke();
+        drawDot(context, graphPoints[i].x, graphPoints[i].y, 3, "red");
     }
-
-    // Draw stuff.
-    //context.font = "30px Arial";
-    //context.fillText("Hello World", 10, 50);
-    //context.fillText(earliestDate, 10, 70);
-    //context.fillText(latestDate, 10, 90);
 }
 
 function getDifferenceInDays(date1, date2) {
@@ -64,4 +50,18 @@ function getDifferenceInDays(date1, date2) {
     let differenceInDays = Math.ceil(difference / (1000 * 3600 * 24));
 
     return differenceInDays;
+}
+
+function drawLine(context, aX, aY, bX, bY, color) {
+    context.moveTo(aX, aY);
+    context.lineTo(bX, bY);
+    context.strokeStyle = color;
+    context.stroke();
+}
+
+function drawDot(context, x, y, size, color) {
+    context.beginPath();
+    context.arc(x - (size / 2), y - (size / 2), size, 0, 2 * Math.PI);
+    context.strokeStyle = color;
+    context.stroke();
 }

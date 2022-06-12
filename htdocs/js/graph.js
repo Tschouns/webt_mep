@@ -23,8 +23,8 @@ function drawGraph(canvasId, data) {
     let differenceInDays = getDifferenceInDays(earliestDate, latestDate);
 
     // Determine step sizes.
-    let xPadding = 20;
-    let yPadding = 10;
+    let xPadding = 30;
+    let yPadding = 20;
 
     let xStepSize = (canvas.width - (2 * xPadding)) / differenceInDays;
     let yStepSize = (canvas.height - (2 * yPadding)) / 9;
@@ -43,6 +43,20 @@ function drawGraph(canvasId, data) {
     // Draw axes.
     drawLine(context, xPadding, canvas.height - yPadding, canvas.width - xPadding, canvas.height - yPadding, "black");
     drawLine(context, xPadding, canvas.height - yPadding, xPadding, yPadding, "black");
+
+    drawText(context, earliestDate.toDateString(), xPadding, canvas.height - (yPadding / 3));
+    drawText(context, latestDate.toDateString(), canvas.width - (xPadding * 3), canvas.height - (yPadding / 3));
+
+    for (let i = 0; i <= differenceInDays; i++) {
+        let axisMarkerX = xPadding + (i * xStepSize);
+        drawLine(context, axisMarkerX, canvas.height - yPadding, axisMarkerX, canvas.height - (yPadding * 0.8), "black");
+    }
+
+    for (let i = 0; i <= 9; i++) {
+        let axisNumberY = canvas.height - (yPadding + (i * yStepSize));
+        drawLine(context, xPadding - (xPadding / 5), axisNumberY, xPadding, axisNumberY, "black");
+        drawText(context, i+1, xPadding / 3, axisNumberY);
+    }
 }
 
 function getDifferenceInDays(date1, date2) {
@@ -65,4 +79,9 @@ function drawDot(context, x, y, size, color) {
     context.arc(x - (size / 2), y - (size / 2), size, 0, 2 * Math.PI);
     context.strokeStyle = color;
     context.stroke();
+}
+
+function drawText(context, text, x, y) {
+    context.font = "8px Arial";
+    context.fillText(text, x, y);
 }

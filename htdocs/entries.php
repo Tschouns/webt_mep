@@ -98,7 +98,7 @@ function displayEntries($conn) {
     echo "<h2>Stimmungsverlauf</h2>";
     echo "<script id=\"mood_data\" type=\"application/json\">$mood_data_json_array</script>";
     echo "<script>mood_data = JSON.parse(document.getElementById(\"mood_data\").text); </script>";
-    echo "<canvas id=\"graph_canvas\"></canvas>";
+    echo "<canvas id=\"graph_canvas\" alt=\"Graphische Darstellung des Stimmungsverlaufs\"></canvas>";
     echo "</article";
 
     // Entry table article.

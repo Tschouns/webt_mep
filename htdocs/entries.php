@@ -187,9 +187,11 @@ function prepareHtmlContent() {
                 </ul>
             </nav>
         </aside>
-        <section id="content_section">
-            <?php prepareHtmlContent(); ?>
-        </section>
+        <div id="content_div">
+            <section>
+                <?php prepareHtmlContent(); ?>
+            </section>
+        </div>
         <footer>
             <p>Made by Jonas Aklin, MEP WEBT, HSLU, 2022</p>
         </footer>

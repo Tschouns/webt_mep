@@ -35,6 +35,11 @@ aside
     padding: 5px;
 }
 
+#content_div
+{
+    grid-area: content;
+}
+
 footer
 {
     background-color: white;
@@ -53,8 +58,6 @@ article
 section
 {
     background-color: transparent;
-
-    grid-area: content;
 }
 
 /* Tables */

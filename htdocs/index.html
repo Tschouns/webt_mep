@@ -29,66 +29,70 @@
             <br />
             <p>Hier k&ouml;nnte ihre Werbung stehen....</p>
         </aside>
-        <section id="content_section">
-            <article id="info_article">
-                <h2>Info</h2>
-                <p>
-                    Dies hier ist ein Tagebuch mit Stimmungsbarometer.
-                </p>
-                <h3>Formular</h3>
-                <p>
-                    Im Formular unten kann ein Eintrag erfasst werden, bestehend aus folgenden Elementen:
-                    <ul>
-                        <li>
-                            <b>Eintragsdatum</b> (das Datum auf das sich der Eintrag bezieht)
-                        </li>
-                        <li>
-                            <b>Stimmung</b> (Zahl zwischen 1 und 10)
-                        </li>
-                        <li>
-                            <b>Text</b> (ein beliebiger Text zum Eintrag)
-                        </li>
-                    </ul>
-                </p>
-                <p>
-                    Eintragsdatum und Text m&uuml;ssen eingegeben werden.
-                </p>
-                <h3>Stimmungsverlauf und &Uuml;bersicht</h3>
-                <p>
-                    Wenn ein Eintrag erfasst wird, wird auf der n&auml;chsten Seite der Stimmungsverlauf in einem Graph dargestellt:
-                </p>
-                <img src="img/graph.png" alt="Beispiel eines Stimmungsverlaufs" />
-                <p>
-                    Unterhalb des Graphs werden alle bisher erstellten Eintr&auml;ge in chronologischer Reihenfolge (nach Eintragsdatum) dargestellt.
-                </p>
-            </article>
-            <article id="form_article">
-                <h2>Eintragsformular</h2>
-                <br />
-                <form action="entries.php" method="post">
-                    <div id="form_grid">
-                        <label for="entry_date">Eintragsdatum</label>
-                        <input type="date" id="entry_date" name="entry_date" oninput="validateEntryDate()">
-                        <div class="error_message" id="entry_date_message"></div>
+        <div id="content_div">
+            <section>
+                <article id="info_article">
+                    <h2>Info</h2>
+                    <p>
+                        Dies hier ist ein Tagebuch mit Stimmungsbarometer.
+                    </p>
+                    <h3>Formular</h3>
+                    <p>
+                        Im Formular unten kann ein Eintrag erfasst werden, bestehend aus folgenden Elementen:
+                        <ul>
+                            <li>
+                                <b>Eintragsdatum</b> (das Datum auf das sich der Eintrag bezieht)
+                            </li>
+                            <li>
+                                <b>Stimmung</b> (Zahl zwischen 1 und 10)
+                            </li>
+                            <li>
+                                <b>Text</b> (ein beliebiger Text zum Eintrag)
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Eintragsdatum und Text m&uuml;ssen eingegeben werden.
+                    </p>
+                    <h3>Stimmungsverlauf und &Uuml;bersicht</h3>
+                    <p>
+                        Wenn ein Eintrag erfasst wird, wird auf der n&auml;chsten Seite der Stimmungsverlauf in einem Graph dargestellt:
+                    </p>
+                    <img src="img/graph.png" alt="Beispiel eines Stimmungsverlaufs" />
+                    <p>
+                        Unterhalb des Graphs werden alle bisher erstellten Eintr&auml;ge in chronologischer Reihenfolge (nach Eintragsdatum) dargestellt.
+                    </p>
+                </article>
+            </section>
+            <section>
+                <article id="form_article">
+                    <h2>Eintragsformular</h2>
+                    <br />
+                    <form action="entries.php" method="post">
+                        <div id="form_grid">
+                            <label for="entry_date">Eintragsdatum</label>
+                            <input type="date" id="entry_date" name="entry_date" oninput="validateEntryDate()">
+                            <div class="error_message" id="entry_date_message"></div>
 
-                        <label for="mood_slider">Stimmung</label>
-                        <input type="range" min="1" max="10" value="5" class="slider" id="mood_slider" name="mood_slider" oninput="displayMood()">
-                        <div id="mood_slider_message"></div>
+                            <label for="mood_slider">Stimmung</label>
+                            <input type="range" min="1" max="10" value="5" class="slider" id="mood_slider" name="mood_slider" oninput="displayMood()">
+                            <div id="mood_slider_message"></div>
 
-                        <label for="entry_text">Text</label>
-                        <textarea id="entry_text" name="entry_text" cols="50" rows="5" oninput="validateEntryText()"></textarea>
-                        <div class="error_message" id="entry_text_message"></div>
+                            <label for="entry_text">Text</label>
+                            <textarea id="entry_text" name="entry_text" cols="50" rows="5" oninput="validateEntryText()"></textarea>
+                            <div class="error_message" id="entry_text_message"></div>
 
-                        <p></p>
-                        <p></p>
-                        <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
 
-                        <p></p>
-                        <button type="submit" id="submit_button"">OK</button>
-                    </div>
-                </form>
-            </article>
-        </section>
+                            <p></p>
+                            <button type="submit" id="submit_button"">OK</button>
+                        </div>
+                    </form>
+                </article>
+            </section>
+        </div>
         <footer>
             <p>Made by Jonas Aklin, MEP WEBT, HSLU, 2022</p>
         </footer>

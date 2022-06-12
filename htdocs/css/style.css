@@ -118,6 +118,14 @@ td.text_column
     height: 30px;
 }
 
+#graph_canvas
+{
+    background-color: cornflowerblue;
+
+    width: 500px;
+    height: 300px;
+}
+
 #entry_table
 {
     width: 100%;

@@ -13,12 +13,34 @@ function drawGraph(canvasId, data) {
         return;
     }
 
-    // Determine dates and step sizes.
+    // Map data points, determine dates.
     let dataPoints = data.map(i => ({ date: new Date(i.entry_date), mood: i.mood }));
-    dataPoints.sort((a, b) => b.date - a.date);
+    dataPoints.sort((a, b) => a.date - b.date);
 
     let earliestDate = dataPoints[0].date;
     let latestDate = dataPoints[dataPoints.length - 1].date;
+
+    let difference = latestDate.getTime() - earliestDate.getTime();
+    let differenceInDays = Math.ceil(difference / (1000 * 3600 * 24));
+
+    // Determine step sizes.
+    let xPadding = 30;
+    let yPadding = 20;
+
+    let xStepSize = (canvas.width - 2 * xPadding) / differenceInDays;
+    let yStepSize = (canvas.height - 2 * yPadding) / 9;
+
+    // Get graph points.
+    // TODO...
+
+    // Draw axes.
+    context.moveTo(xPadding, canvas.height - yPadding);
+    context.lineTo(canvas.width - xPadding, canvas.height - yPadding);
+    context.stroke();
+
+    context.moveTo(xPadding, canvas.height - yPadding);
+    context.lineTo(xPadding, yPadding);
+    context.stroke();
 
     // Draw stuff.
     context.font = "30px Arial";

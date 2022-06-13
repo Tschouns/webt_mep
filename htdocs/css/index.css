@@ -2,6 +2,12 @@
 {
 }
 
+#graph_image
+{
+    width: 100%;
+    max-width: 600px;
+}
+
 #form_article
 {
 }

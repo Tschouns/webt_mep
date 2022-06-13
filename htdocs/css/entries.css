@@ -18,7 +18,8 @@ td.text_column
 {
     background-color: white;
 
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 400px;
 }
 

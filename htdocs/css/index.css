@@ -7,12 +7,26 @@
 #form_grid
 {
     display: grid;
-    grid-template-columns: 100px 1fr 1fr;
-    grid-template-rows: 30px 30px 100px 30px 30px 30px;
+    grid-template-columns: 100px 1fr 50px;
+    grid-template-rows: 30px 30px 100px 30px 30px 30px 30px 30px;
 }
 
 .error_message
 {
+}
+
+#mood_slider_message
+{
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: dimgray;
+
+    width: 40px;
+    height: 25px;
+    margin: 2px;
+
+    text-align: center;
 }
 
 #submit_button

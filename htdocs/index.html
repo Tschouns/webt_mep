@@ -63,7 +63,7 @@
                         <div id="form_grid">
                             <label for="entry_date">Eintragsdatum</label>
                             <input type="date" id="entry_date" name="entry_date" oninput="validateEntryDate()">
-                            <div class="error_message w3-text-red" id="entry_date_message"></div>
+                            <p></p>
 
                             <label for="mood_slider">Stimmung</label>
                             <input type="range" min="1" max="10" value="5" class="slider" id="mood_slider" name="mood_slider" oninput="displayMood()">
@@ -71,7 +71,14 @@
 
                             <label for="entry_text">Text</label>
                             <textarea id="entry_text" name="entry_text" cols="50" rows="5" oninput="validateEntryText()"></textarea>
-                            <div class="error_message w3-text-red" id="entry_text_message"></div>
+                            <p></p>
+
+                            <p></p>
+                            <div>
+                                <div class="error_message w3-text-red" id="entry_date_message"></div>
+                                <div class="error_message w3-text-red" id="entry_text_message"></div>
+                            </div>
+                            <p></p>
 
                             <p></p>
                             <p></p>

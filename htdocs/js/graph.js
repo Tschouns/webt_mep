@@ -1,3 +1,8 @@
+/**
+ * Draws the mood graph onto the specified canvas, based on the specified mood data.
+ * @param canvasId The ID of the canvas to draw on
+ * @param data The mood data points
+ */
 function drawGraph(canvasId, data) {
     // Get the canvas and context.
     let canvas = document.getElementById(canvasId);
@@ -59,6 +64,12 @@ function drawGraph(canvasId, data) {
     }
 }
 
+/**
+ * Gets the difference between two specified dates in days.
+ * @param date1 The first date
+ * @param date2 The second date
+ * @returns {number} The number of days between the two dates
+ */
 function getDifferenceInDays(date1, date2) {
     let difference = date2.getTime() - date1.getTime();
     let differenceInDays = Math.ceil(difference / (1000 * 3600 * 24));
@@ -66,6 +77,15 @@ function getDifferenceInDays(date1, date2) {
     return differenceInDays;
 }
 
+/**
+ * Draws a line between two specified points A and B.
+ * @param context The context used for drawing
+ * @param aX The X coordinate of point A
+ * @param aY The Y coordinate of point A
+ * @param bX The X coordinate of point B
+ * @param bY The Y coordinate of point B
+ * @param color The color to draw with
+ */
 function drawLine(context, aX, aY, bX, bY, color) {
     context.beginPath();
     context.moveTo(aX, aY);
@@ -74,13 +94,13 @@ function drawLine(context, aX, aY, bX, bY, color) {
     context.stroke();
 }
 
-function drawDot(context, x, y, size, color) {
-    context.beginPath();
-    context.arc(x - (size / 2), y - (size / 2), size, 0, 2 * Math.PI);
-    context.strokeStyle = color;
-    context.stroke();
-}
-
+/**
+ * Draws a text.
+ * @param context The context used to draw with
+ * @param text The text to draw
+ * @param x The X coordinate of the text
+ * @param y The Y coordinate of the text
+ */
 function drawText(context, text, x, y) {
     context.font = "8px Arial";
     context.fillText(text, x, y);

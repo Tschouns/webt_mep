@@ -11,18 +11,18 @@
         <script type="text/javascript" src="js/form.js"></script>
     </head>
     <body onload="validateForm(); attachSubmitEventHandler();">
-        <header>
+        <header class="w3-container w3-transparent">
             <h1>Tagebuch mit Stimmungsbarometer</h1>
         </header>
-        <div id="navigation_container">
+        <div id="navigation_container" class="w3-container w3-collapse w3-indigo">
             <nav>
-                <a href="#info_article">Info</a>
-                <a href="#form_article">Eintragsformular</a>
+                <a class="w3-bar-item w3-button w3-hover-white" href="#info_article">Info</a>
+                <a class="w3-bar-item w3-button w3-hover-white" href="#form_article">Eintragsformular</a>
             </nav>
         </div>
-        <div id="content_container">
+        <div id="content_container" class="w3-container w3-main">
             <section>
-                <article id="info_article">
+                <article id="info_article" class="w3-container">
                     <h2>Info</h2>
                     <p>
                         Dies hier ist ein Tagebuch mit Stimmungsbarometer.
@@ -56,14 +56,14 @@
                 </article>
             </section>
             <section>
-                <article id="form_article">
+                <article id="form_article" class="w3-container">
                     <h2>Eintragsformular</h2>
                     <br />
                     <form action="entries.php" method="post">
                         <div id="form_grid">
                             <label for="entry_date">Eintragsdatum</label>
                             <input type="date" id="entry_date" name="entry_date" oninput="validateEntryDate()">
-                            <div class="error_message" id="entry_date_message"></div>
+                            <div class="error_message w3-text-red" id="entry_date_message"></div>
 
                             <label for="mood_slider">Stimmung</label>
                             <input type="range" min="1" max="10" value="5" class="slider" id="mood_slider" name="mood_slider" oninput="displayMood()">
@@ -71,7 +71,7 @@
 
                             <label for="entry_text">Text</label>
                             <textarea id="entry_text" name="entry_text" cols="50" rows="5" oninput="validateEntryText()"></textarea>
-                            <div class="error_message" id="entry_text_message"></div>
+                            <div class="error_message w3-text-red" id="entry_text_message"></div>
 
                             <p></p>
                             <p></p>
@@ -84,7 +84,7 @@
                 </article>
             </section>
         </div>
-        <footer>
+        <footer class="w3-container w3-transparent">
             <p>Made by Jonas Aklin, MEP WEBT, HSLU, 2022</p>
         </footer>
     </body>

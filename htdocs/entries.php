@@ -94,14 +94,14 @@ function displayEntries($conn) {
     $mood_data_json_array = "[ " . $mood_data_json . " ]";
 
     // Graph article.
-    echo "<article>";
+    echo "<article class=\"w3-container\">";
     echo "<h2>Stimmungsverlauf</h2>";
     echo "<script id=\"mood_data\" type=\"application/json\">$mood_data_json_array</script>";
     echo "<canvas id=\"graph_canvas\" alt=\"Graphische Darstellung des Stimmungsverlaufs\"></canvas>";
     echo "</article>";
 
     // Entry table article.
-    echo "<article>";
+    echo "<article class=\"w3-container\">";
     echo "<h2>Eintr&auml;ge</h2>";
 
     echo "<table id=\"entry_table\">";
@@ -133,7 +133,7 @@ function displayCookieContent() {
     setcookie("number_of_entries", $number_of_entries, time()+(3600 * 12));
 
     // Display a "welcome back" message.
-    echo "<article>";
+    echo "<article class=\"w3-container\">";
     echo "<p>Willkommen zurück! Sie haben heute schon den $number_of_entries. Eintrag erfasst.</p>";
     echo "</article>";
 }
@@ -173,20 +173,20 @@ function prepareHtmlContent() {
         <script type="text/javascript" src="js/graph.js"></script>
     </head>
     <body onload="drawGraph('graph_canvas', JSON.parse(document.getElementById('mood_data').text))">
-       <header>
+       <header class="w3-container w3-transparent">
             <h1>Tagebuch mit Stimmungsbarometer - Eintr&auml;ge</h1>
         </header>
-        <div id="navigation_container">
+        <div id="navigation_container" class="w3-container w3-collapse w3-indigo">
             <nav>
-                <a href="index.html">Zur&uuml;ck</a>
+                <a class="w3-bar-item w3-button w3-hover-white" href="index.html">Zur&uuml;ck</a>
             </nav>
         </div>
-        <div id="content_container">
+        <div id="content_container" class="w3-container">
             <section>
                 <?php prepareHtmlContent(); ?>
             </section>
         </div>
-        <footer>
+        <footer class="w3-container w3-transparent">
             <p>Made by Jonas Aklin, MEP WEBT, HSLU, 2022</p>
         </footer>
     </body>

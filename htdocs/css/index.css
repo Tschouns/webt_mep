@@ -1,15 +1,7 @@
-#info_article
-{
-}
-
 #graph_image
 {
     width: 100%;
     max-width: 600px;
-}
-
-#form_article
-{
 }
 
 #form_grid
@@ -19,9 +11,8 @@
     grid-template-rows: 30px 30px 100px 30px 30px 30px;
 }
 
-div.error_message
+.error_message
 {
-    color: orangered;
 }
 
 #submit_button

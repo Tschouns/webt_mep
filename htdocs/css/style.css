@@ -1,14 +1,11 @@
 *, h1, h2, h3, h4
 {
     font-family: 'Gentium Plus', serif;
-    color: black;
 }
 
-/* Main layout */
+/* Desktop layout: */
 body
 {
-    background-color: lightslategray;
-
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 100px 1fr 50px;
@@ -16,8 +13,21 @@ body
         "header header"
         "navigation content"
         "footer footer";
+}
 
-    padding: 0px;
+/* Mobile version, i.e. when the viewport is 800px or smaller: */
+@media screen and (max-width: 800px) {
+    body
+    {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 150px 50px 1fr 50px;
+        grid-template-areas:
+        "header"
+        "navigation"
+        "content"
+        "footer";
+    }
 }
 
 header
@@ -25,22 +35,11 @@ header
     background-color: white;
 
     grid-area: header;
-    padding: 5px;
-}
-
-#navigation_aside
-{
-    visibility: hidden;
-    background-color: green;
-    grid-area: navigation;
-    padding: 5px;
 }
 
 #navigation_container
 {
-    background-color: red;
     grid-area: navigation;
-    padding: 5px;
 }
 
 #content_container
@@ -53,43 +52,12 @@ footer
     background-color: white;
 
     grid-area: footer;
-    padding: 5px;
-}
-
-/* Navigation */
-nav
-{
-}
-
-nav ul
-{
-    list-style-type: none;
-}
-
-nav a
-{
-    display: block;
-    text-decoration: none;
-}
-
-nav a:hover
-{
-    background-color: dimgray;
-    color: white;
-}
-
-/* Content */
-section
-{
-    background-color: transparent;
 }
 
 article
 {
-    background-color: lightgrey;
-
+    background-color: lightgray;
     margin: 5px;
-    padding: 5px;
 }
 
 /* Tables */
@@ -112,21 +80,4 @@ tr.row_type_0
 tr.row_type_1
 {
     background-color: darkgray;
-}
-
-/* Mobile version, i.e. when the viewport is 800px or smaller: */
-@media screen and (max-width: 800px) {
-    body
-    {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 150px 50px 1fr 50px;
-        grid-template-areas:
-        "header"
-        "navigation"
-        "content"
-        "footer";
-
-        padding: 0px;
-    }
 }

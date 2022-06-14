@@ -39,6 +39,9 @@ header
 
 #navigation_container
 {
+    background-color: dimgray;
+    color: white;
+
     grid-area: navigation;
 }
 
@@ -56,28 +59,35 @@ footer
 
 article
 {
-    background-color: lightgray;
+    background-color: #eeeeee;
+
     margin: 5px;
 }
 
 /* Tables */
 table
 {
-    background-color: black;
+    background-color: dimgray;
 }
 
 th
 {
     background-color: white;
+
     text-align: left;
 }
 
 tr.row_type_0
 {
-    background-color: lightgrey;
+    background-color: #eeeeee;
 }
 
 tr.row_type_1
 {
-    background-color: darkgray;
+    background-color: #cccccc;
+}
+
+tr:hover
+{
+    background-color: white;
 }

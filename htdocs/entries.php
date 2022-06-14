@@ -176,7 +176,7 @@ function prepareHtmlContent() {
        <header class="w3-container w3-transparent">
             <h1>Tagebuch mit Stimmungsbarometer - Eintr&auml;ge</h1>
         </header>
-        <div id="navigation_container" class="w3-container w3-collapse w3-indigo">
+        <div id="navigation_container" class="w3-container w3-collapse">
             <nav>
                 <a class="w3-bar-item w3-button w3-hover-white" href="index.html">Zur&uuml;ck</a>
             </nav>

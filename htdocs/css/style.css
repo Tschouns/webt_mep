@@ -14,7 +14,7 @@ body
     grid-template-rows: 100px 1fr 50px;
     grid-template-areas:
         "header header"
-        "sidebar content"
+        "navigation content"
         "footer footer";
 
     padding: 0px;
@@ -28,15 +28,22 @@ header
     padding: 5px;
 }
 
-aside
+#navigation_aside
 {
-    background-color: darkgray;
-
-    grid-area: sidebar;
+    visibility: hidden;
+    background-color: green;
+    grid-area: navigation;
     padding: 5px;
 }
 
-#content_div
+#navigation_container
+{
+    background-color: red;
+    grid-area: navigation;
+    padding: 5px;
+}
+
+#content_container
 {
     grid-area: content;
 }
@@ -52,7 +59,6 @@ footer
 /* Navigation */
 nav
 {
-    position: fixed;
 }
 
 nav ul
@@ -106,4 +112,21 @@ tr.row_type_0
 tr.row_type_1
 {
     background-color: darkgray;
+}
+
+/* Mobile version, i.e. when the viewport is 800px or smaller: */
+@media screen and (max-width: 800px) {
+    body
+    {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 150px 50px 1fr 50px;
+        grid-template-areas:
+        "header"
+        "navigation"
+        "content"
+        "footer";
+
+        padding: 0px;
+    }
 }

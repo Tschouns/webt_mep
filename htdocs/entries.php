@@ -176,17 +176,12 @@ function prepareHtmlContent() {
        <header>
             <h1>Tagebuch mit Stimmungsbarometer - Eintr&auml;ge</h1>
         </header>
-        <aside>
+        <div id="navigation_container">
             <nav>
-                <h2>Navigation</h2>
-                <ul>
-                    <li>
-                        <a href="index.html">Zur&uuml;ck</a>
-                    </li>
-                </ul>
+                <a href="index.html">Zur&uuml;ck</a>
             </nav>
-        </aside>
-        <div id="content_div">
+        </div>
+        <div id="content_container">
             <section>
                 <?php prepareHtmlContent(); ?>
             </section>
